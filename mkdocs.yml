@@ -7,6 +7,7 @@ theme:
     primary: indigo
     features:
 nav:
+  - index.md
   - Глава 1:
       - Раздел 1: Глава1/Раздел1.md
       - Раздел 2: Глава1/Раздел2.md
