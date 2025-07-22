@@ -5,9 +5,11 @@ theme:
   palette:
     scheme: default
     primary: indigo
-    features:
+
+extra_css:
+  - overrides/extra.css      # ← подключаем файл со стилями
+
 nav:
-  - index.md
   - Глава 1:
       - Раздел 1: Глава1/Раздел1.md
       - Раздел 2: Глава1/Раздел2.md
