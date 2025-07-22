@@ -1,2 +1,2 @@
-/* убираем заголовок (дублирующееся название учебника) в боковом меню */
-.md-nav__title{display:none;}
+/* прячем «CS: Программирование на Java» в боковом меню */
+.md-sidebar__inner .md-nav__title { display:none; }
