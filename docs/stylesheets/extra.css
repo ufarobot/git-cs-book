@@ -1,0 +1,19 @@
+/* 1) Фон верхней панели */
+.md-header {
+    background-color: #000000 !important;
+}
+
+/* 2) Цвет текста site_name */
+.md-header .md-header__title {
+    color: #ffffff !important;
+}
+
+/* 3) При наведении на ссылку меню слева — подсветка */
+.md-nav__link:hover {
+    background-color: rgba(0, 0, 0, 0.44) !important;
+    color: #ffffff !important;
+}
+
+.md-nav__title {
+    display: none !important;
+}
