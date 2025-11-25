@@ -17,3 +17,72 @@
 .md-nav__title {
     display: none !important;
 }
+
+/* 4) Убираем «серые плашки» у встроенного кода и делаем его чуть более «текстовым» */
+.md-typeset :not(pre) > code {
+    background-color: transparent !important; /* без серого фона */
+    box-shadow: none !important;
+    padding: 0 0.05em !important;
+    border-radius: 0 !important;
+    color: #1565c0 !important; /* мягкий синий цвет для команд и литералов */
+    font-weight: 500;
+    font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+/* Фон для блоков кода */
+.md-typeset pre,
+.md-typeset pre > code {
+    background-color: rgba(227, 242, 253, 0.21) !important; /* светло-голубой фон */
+}
+
+/* 5) Лёгкая подсветка строк таблиц для лучшего чтения */
+.md-typeset table:not([class]) tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.015);
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+    padding: 0.35rem 0.6rem;
+}
+
+/* Общий светло‑серый фон для страницы и боковых панелей */
+body {
+    background-color: #e5e5e5;
+}
+
+.md-sidebar,
+.md-sidebar--primary,
+.md-sidebar--secondary {
+    background-color: #e5e5e5;
+}
+
+/* Белый фон только у основного контента */
+.md-main__inner {
+    background: none;
+}
+
+.md-content {
+    background-color: #ffffff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.10);
+    border-radius: 4px;
+}
+
+/* Заголовки второго уровня в стиле Open edX (как бывший h3) */
+.md-typeset h2 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.44); /* как var(--color-heading-border) */
+    padding-bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 4px;
+
+    /* Настройки шрифта (без смены семейства) */
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.6px;
+    color: grey;
+}
+
+/* Заголовки третьего уровня: просто жирный текст, без линий */
+.md-typeset h3 {
+    font-weight: 600;
+    border-bottom: none;
+}
