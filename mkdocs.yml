@@ -1,23 +1,72 @@
+# Конфигурация сайта для MkDocs + Material
+
 site_name: "CS: Программирование на Java"
+# Тема оформления и язык интерфейса
 theme:
   name: material
   language: ru
   features:
     - content.code.copy
+    - navigation.footer
 
+# Расширения Markdown и плагины pymdownx (таблицы, подсветка кода, формулы)
 markdown_extensions:
-  - pymdownx.highlight:
+  - toc:
+      toc_depth: 0
+  - admonition     # выносные блоки "Внимание", "Подсказка" и т.п.
+  - tables        # поддержка маркдаун-таблиц
+  - pymdownx.arithmatex:   # обертка для формул, чтобы MathJax их нашёл
+      generic: true
+  - pymdownx.highlight:    # расширенная подсветка кода
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.inlinehilite   # подсветка кода прямо в строке текста
+  - pymdownx.snippets      # подключение фрагментов кода из отдельных файлов
+  - pymdownx.superfences   # улучшенная работа с многострочными блоками кода
 
+# Наши дополнительные стили (colors, отступы и т.п.)
 extra_css:
   - stylesheets/extra.css      # ← подключаем файл со стилями
 
+# Скрипты для поддержки формул (MathJax)
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 nav:
-  - Проекты:
-      - Библиотеки Std:
-        - StdDraw: Глава1/Библиотеки Std.md
+  - Java основы – справочник:
+      - Простейшая программа: java-basic/concepts/simple-program.md
+      - Переменные и типы данных: java-basic/concepts/variables-and-types.md
+      - Целые числа и операции (int): java-basic/concepts/integers-and-ops.md
+      - Дробные числа и операции (double): java-basic/concepts/doubles-and-ops.md
+      - Логические значения (boolean): java-basic/concepts/booleans-and-logic.md
+      - Символы (char): java-basic/concepts/chars.md
+      - Строки (String): java-basic/concepts/strings.md
+      - Ввод и вывод: java-basic/concepts/io-basics.md
+      - Условия (if): java-basic/concepts/if-statements.md
+      - Циклы: java-basic/concepts/loops.md
+      - Массивы: java-basic/concepts/arrays-1d.md
+      - Многомерные массивы: java-basic/concepts/arrays-2d.md
+      - Функции (методы): java-basic/concepts/methods.md
+
+  - Java основы – API:
+      - Math (java.lang.Math): java-basic/api/api-math.md
+      - Scanner (java.util.Scanner): java-basic/api/api-scanner.md
+      - Вывод System.out и PrintWriter: java-basic/api/api-output.md
+      - String (java.lang.String): java-basic/api/api-string.md
+      - StringBuilder (java.lang.StringBuilder): java-basic/api/api-stringbuilder.md
+      - Arrays (java.util.Arrays): java-basic/api/api-arrays.md
+
+  - Java проекты – справочник:
+      - Структура учебного проекта: java-projects/concepts/project-structure.md
+      - Чтение входных данных из файла: java-projects/concepts/file-input.md
+      - Разбор требований задачи: java-projects/concepts/problem-analysis.md
+      - Пошаговая разработка: java-projects/concepts/step-by-step-dev.md
+      - Отладка и тестирование: java-projects/concepts/debugging-and-tests.md
+      - Маленькие консольные игры: java-projects/concepts/mini-console-games.md
+
+  - Java проекты – API:
+      - StdDraw (графика): java-projects/api/stddraw.md
+      - StdAudio: java-projects/api/stdaudio.md
+      - Собственные утилиты курса: java-projects/api/course-utils.md
