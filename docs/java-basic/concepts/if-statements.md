@@ -17,8 +17,6 @@ if (x > 0) {
 }
 ```
 
----
-
 ## Краткая сводка
 
 Условие в Java всегда основано на значении типа `boolean` — `true` или `false`.
@@ -212,7 +210,13 @@ if (score < 0 || score > 100) {
 }
 ```
 
----
+## Блок-схемы
+
+![](images/if-simple.png){ width="50%" }
+![](images/if-else.png){ width="50%" }
+![](images/if-seq.png)
+![](images/if-nested.png)
+![](images/if-waterfall.png)
 
 ## Что нужно запомнить
 

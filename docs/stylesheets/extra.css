@@ -67,6 +67,20 @@ body {
     border-radius: 4px;
 }
 
+/* Заголовки первого уровня в стиле Open edX (как бывший h2) */
+.md-typeset h1 {
+    padding-bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 4px;
+
+    /* Настройки шрифта (без смены семейства) */
+    font-weight: 800;
+    font-size: 1.7rem;
+    letter-spacing: -0.6px;
+    color: black;
+}
+
+
 /* Заголовки второго уровня в стиле Open edX (как бывший h3) */
 .md-typeset h2 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.44); /* как var(--color-heading-border) */

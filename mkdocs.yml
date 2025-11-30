@@ -11,6 +11,7 @@ theme:
 
 # Расширения Markdown и плагины pymdownx (таблицы, подсветка кода, формулы)
 markdown_extensions:
+  - attr_list
   - toc:
       toc_depth: 0
   - admonition     # выносные блоки "Внимание", "Подсказка" и т.п.
@@ -36,19 +37,19 @@ extra_javascript:
 
 nav:
   - Java основы – справочник:
-      - Простейшая программа: java-basic/concepts/simple-program.md
+      - Простейшая программа: java-basic/concepts/1-simple-program.md
       - Переменные и типы данных: java-basic/concepts/variables-and-types.md
-      - Целые числа и операции (int): java-basic/concepts/integers-and-ops.md
-      - Дробные числа и операции (double): java-basic/concepts/doubles-and-ops.md
-      - Логические значения (boolean): java-basic/concepts/booleans-and-logic.md
-      - Символы (char): java-basic/concepts/chars.md
-      - Строки (String): java-basic/concepts/strings.md
+      - Целые числа и операции: java-basic/concepts/integers-and-ops.md
+      - Дробные числа и операции: java-basic/concepts/doubles-and-ops.md
+      - Логические значения: java-basic/concepts/booleans-and-logic.md
+      - Символы: java-basic/concepts/chars.md
+      - Строки: java-basic/concepts/strings.md
       - Ввод и вывод: java-basic/concepts/io-basics.md
-      - Условия (if): java-basic/concepts/if-statements.md
+      - Ветвления: java-basic/concepts/if-statements.md
       - Циклы: java-basic/concepts/loops.md
       - Массивы: java-basic/concepts/arrays-1d.md
       - Многомерные массивы: java-basic/concepts/arrays-2d.md
-      - Функции (методы): java-basic/concepts/methods.md
+      - Функции: java-basic/concepts/methods.md
 
   - Java основы – API:
       - Math (java.lang.Math): java-basic/api/api-math.md
