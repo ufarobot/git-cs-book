@@ -59,15 +59,15 @@ nav:
       - StringBuilder (java.lang.StringBuilder): java-basic/api/api-stringbuilder.md
       - Arrays (java.util.Arrays): java-basic/api/api-arrays.md
 
-  - Java проекты – справочник:
-      - Структура учебного проекта: java-projects/concepts/project-structure.md
-      - Чтение входных данных из файла: java-projects/concepts/file-input.md
-      - Разбор требований задачи: java-projects/concepts/problem-analysis.md
-      - Пошаговая разработка: java-projects/concepts/step-by-step-dev.md
-      - Отладка и тестирование: java-projects/concepts/debugging-and-tests.md
-      - Маленькие консольные игры: java-projects/concepts/mini-console-games.md
-
-  - Java проекты – API:
-      - StdDraw (графика): java-projects/api/stddraw.md
-      - StdAudio: java-projects/api/stdaudio.md
-      - Собственные утилиты курса: java-projects/api/course-utils.md
+#  - Java проекты – справочник:
+#      - Структура учебного проекта: java-projects/concepts/project-structure.md
+#      - Чтение входных данных из файла: java-projects/concepts/file-input.md
+#      - Разбор требований задачи: java-projects/concepts/problem-analysis.md
+#      - Пошаговая разработка: java-projects/concepts/step-by-step-dev.md
+#      - Отладка и тестирование: java-projects/concepts/debugging-and-tests.md
+#      - Маленькие консольные игры: java-projects/concepts/mini-console-games.md
+#
+#  - Java проекты – API:
+#      - StdDraw (графика): java-projects/api/stddraw.md
+#      - StdAudio: java-projects/api/stdaudio.md
+#      - Собственные утилиты курса: java-projects/api/course-utils.md
