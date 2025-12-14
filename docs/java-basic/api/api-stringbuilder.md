@@ -1,6 +1,6 @@
 
 
-# StringBuilder (java.lang.StringBuilder) — краткий API
+# StringBuilder
 
 `java.lang.StringBuilder` — класс для «изменяемых строк».
 

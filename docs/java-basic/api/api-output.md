@@ -1,39 +1,29 @@
+# Стандартный вывод (System.out)
 
+`System.out` — уже созданный объект для вывода текста и чисел в консоль.  
 
-# Вывод: System.out и PrintWriter — краткий API
+```java
+System.out.println("Привет, Java!");
+System.out.println(123);
+System.out.printf("x = %.2f%n", 3.14159);
+```
 
-В Java для вывода текста и чисел чаще всего используются:
+---
 
-- `System.out` — стандартный поток вывода на консоль (тип `PrintStream`).
-- `PrintWriter` — отдельный объект для вывода, который обычно создают поверх `System.out`.
+## Основные методы
 
+Самое нужное в учебных задачах:
 
-**В чём разница**
+| Вызов                                   | Что делает                            |
+|-----------------------------------------|---------------------------------------|
+| `System.out.print(x)`                   | Печатает `x` без перевода строки.     |
+| `System.out.println(x)`                 | Печатает `x` и переводит строку.      |
+| `System.out.println()`                  | Просто переводит строку.              |
+| `System.out.printf(format, args...)`    | Форматированный вывод по шаблону.     |
 
-- `System.out` уже создан и привязан к консоли, им можно сразу пользоваться, его не закрывают.
-- `PrintWriter` нужно создать вручную (часто на основе `System.out` или файла), у него есть `flush()` и `close()`, вывод может буферизоваться.
-- В простых программах обычно хватает `System.out.println(...)`.
-- `PrintWriter` удобен, когда нужен единый объект вывода (например, для передачи в методы) или когда вывод идёт не в консоль, а в файл/другой поток.
+Есть варианты `print`/`println` для `int`, `double`, `char`, `boolean` и других типов – можно передавать почти любое значение.
 
-
-## System.out (PrintStream)
-
-`System.out` — готовый объект для вывода в консоль.
-
-- Используется напрямую: `System.out.println(...)`, без `new`.
-
-**Основные методы**
-
-| Сигнатура                              | Описание                                        |
-|----------------------------------------|-------------------------------------------------|
-| `void print(String s)`                 | Печатает строку `s` без перевода строки.        |
-| `void println(String s)`              | Печатает строку `s` и переводит строку.         |
-| `void println()`                      | Просто перевод строки.                          |
-| `void printf(String format, Object... args)` | Форматированный вывод по строке `format`. |
-
-Есть перегруженные варианты `print`/`println` для `int`, `double`, `char`, `boolean` и других типов. Можно передать почти любой тип — метод сам преобразует его в текст.
-
-Пример:
+Примеры:
 
 ```java
 int a = 5;
@@ -43,118 +33,159 @@ System.out.print("a = ");
 System.out.println(a);           // a = 5
 
 System.out.println("x = " + x);  // x = 3.14
-
-System.out.printf("a = %d, x = %.2f%n", a, x);
-// a = 5, x = 3.14
 ```
 
-Здесь `%d` — целое число, `%.2f` — число с плавающей точкой с двумя знаками после запятой, `%n` — перевод строки.
+---
 
-## PrintWriter
+## Форматированный вывод (printf)
 
-`PrintWriter` часто используют как «обёртку» над `System.out`:
+`printf` позволяет управлять форматированием числа: количество знаков после запятой, вид целого числа и т.п.  
+В отличие от `println`, `printf` сам по себе не добавляет перевод строки (нужно явно указать `%n`).
 
 ```java
-PrintWriter out = new PrintWriter(System.out);
+int n = 7;
+double x = 3.14159;
 
-out.println("Hello");
-out.flush();      // выталкивает буфер в консоль
-out.close();      // закрывает писатель (включая flush)
+System.out.printf("n = %d%n", n);               // n = 7
+System.out.printf("x = %f%n", x);               // x = 3.141590
+System.out.printf("x = %.2f%n", x);             // x = 3.14
+System.out.printf("n = %d, x = %.3f%n", n, x);  // n = 7, x = 3.142
 ```
 
-Особенности:
+Часто используемые спецификаторы:
 
-- Вывод может буферизоваться — данные не всегда появляются сразу.
-- `flush()` принудительно отправляет всё, что накопилось в буфере.
-- `close()` автоматически делает `flush()` и закрывает поток.
+| Спецификатор | Значение                                   | Пример                               |
+|--------------|--------------------------------------------|--------------------------------------|
+| `%d`         | целое число                                | `System.out.printf("%d", 10);`       |
+| `%f`         | число с плавающей точкой                   | `System.out.printf("%f", 3.5);`      |
+| `%.2f`       | число с 2 знаками после запятой            | `System.out.printf("%.2f", 3.5);`    |
+| `%n`         | перевод строки (кроссплатформенный)        | `System.out.printf("Hello%n");`      |
 
-**Основные методы PrintWriter**
+### Автоматическое превращение значений в текст
 
-| Сигнатура                              | Описание                                        |
-|----------------------------------------|-------------------------------------------------|
-| `void print(String s)`                 | Печатает строку `s` без перевода строки.        |
-| `void println(String s)`              | Печатает строку `s` и переводит строку.         |
-| `void println()`                      | Просто перевод строки.                          |
-| `void printf(String format, Object... args)` | Форматированный вывод.                  |
-| `void flush()`                         | Принудительно отправляет буфер в выходной поток.|
-| `void close()`                         | Закрывает писатель и выполняет `flush()`.       |
+При конкатенации строк через `+` числа и логические значения автоматически превращаются в текст:
 
-У этих методов есть такие же перегрузки по типам, как и у `System.out` (для чисел, логических значений и т.д.).
+```java
+int a = 5;
+double x = 3.14;
+boolean ok = true;
+
+System.out.println("a = " + a);        // a = 5
+System.out.println("x = " + x);        // x = 3.14
+System.out.println("ok = " + ok);      // ok = true
+```
+
+С `printf` передаём сами значения, а формат (`%d`, `%f` и т.п.) задаёт, как именно они будут преобразованы в текст:
+
+```java
+int a = 5;
+double x = 3.14;
+
+System.out.printf("a = %d%n", a);      // a = 5
+System.out.printf("x = %.1f%n", x);    // x = 3.1
+```
+
+---
+
+## Быстрый шаблон sout в IDE
+
+Во многих средах разработки (например, IntelliJ IDEA) есть сокращение `sout`:  
+вводишь `sout` и нажимаешь Tab (или другую горячую клавишу) – IDE автоматически подставляет `System.out.println();`.
+
+Это удобно, когда нужно быстро написать несколько строк вывода.
+
+![Шаблон sout в IDE](images/ide-sout.png)
+
+---
 
 ## Примеры использования
 
-**Простой вывод через System.out**
+**Аккуратный вывод дробного результата**
 
 ```java
-import java.util.Scanner;
-
-public class SimpleOutputExample {
+public class SpeedExample {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        double distance = 150.0; // километров
+        double time = 2.0;       // часов
 
-        int a = in.nextInt();
-        int b = in.nextInt();
+        double speed = distance / time;
 
-        int sum = a + b;
-
-        System.out.println("Сумма = " + sum);
+        System.out.printf("Скорость: %.2f%n", speed);
     }
 }
 ```
 
-**Шаблон с PrintWriter**
+Программа выведет:
+```text
+Скорость: 75.00
+```
+
+**Вывод нескольких значений в одной строке**
 
 ```java
-import java.io.PrintWriter;
-import java.util.Scanner;
-
-public class SumWithPrintWriter {
+public class ManyValuesExample {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        PrintWriter out = new PrintWriter(System.out);
+        int n = 5;
+        int m = 7;
 
-        int a = in.nextInt();
-        int b = in.nextInt();
-
-        int sum = a + b;
-
-        out.println(sum);
-
-        out.close();
+        System.out.println("n = " + n + ", m = " + m);
     }
 }
 ```
 
-В этом шаблоне вывод идёт через `out.println(...)`, а в конце `out.close()` гарантирует, что весь текст действительно окажется в консоли.
+Программа выведет:
+```text
+n = 5, m = 7
+```
 
-**Форматированный вывод**
+**Простая табличка в консоли**
 
 ```java
-import java.io.PrintWriter;
-
-public class FormatExample {
+public class TableExample {
     public static void main(String[] args) {
-        PrintWriter out = new PrintWriter(System.out);
+        System.out.println("i  i^2");
+        System.out.println("------");
 
-        int n = 7;
-        double x = 3.14159;
-
-        out.printf("n = %d, x = %.3f%n", n, x);
-
-        out.close();
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(i + "  " + (i * i));
+        }
     }
 }
 ```
 
-## Замечания
+Программа выведет:
+```text
+i  i^2
+------
+1  1
+2  4
+3  9
+4  16
+5  25
+```
 
-- В одной программе лучше не смешивать вывод через `System.out.println(...)` и через `PrintWriter out = new PrintWriter(System.out)` одновременно — выбрать один подход и придерживаться его.
-- При использовании `PrintWriter` важно в конце вызвать `flush()` или `close()`, иначе часть вывода может остаться в буфере.
-- Форматированный вывод (`printf`) удобно использовать, когда нужно строго контролировать формат текста и количество знаков после запятой.
+**Вывод результата логического выражения**
+
+```java
+public class BooleanExample {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 3;
+
+        System.out.println("a > b: " + (a > b));
+        System.out.println("a % 2 == 0: " + (a % 2 == 0));
+    }
+}
+```
+
+Программа выведет:
+```text
+a > b: true
+a % 2 == 0: true
+```
+
+---
 
 ## Полный API
 
-Подробные описания всех методов см. в официальной документации:
-
-- [`java.io.PrintStream` (Java SE 11)](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/PrintStream.html)
-- [`java.io.PrintWriter` (Java SE 11)](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/PrintWriter.html)
+- Подробности по всем методам вывода см. в документации [`java.io.PrintStream` (Java SE 11)](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/PrintStream.html).

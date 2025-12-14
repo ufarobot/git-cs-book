@@ -26,6 +26,9 @@ markdown_extensions:
   - pymdownx.snippets      # подключение фрагментов кода из отдельных файлов
   - pymdownx.superfences   # улучшенная работа с многострочными блоками кода
 
+extra:
+  generator: false
+
 # Наши дополнительные стили (colors, отступы и т.п.)
 extra_css:
   - stylesheets/extra.css      # ← подключаем файл со стилями
@@ -52,12 +55,15 @@ nav:
       - Функции: java-basic/concepts/methods.md
 
   - Java основы – API:
-      - Math (java.lang.Math): java-basic/api/api-math.md
-      - Scanner (java.util.Scanner): java-basic/api/api-scanner.md
-      - Вывод System.out и PrintWriter: java-basic/api/api-output.md
-      - String (java.lang.String): java-basic/api/api-string.md
-      - StringBuilder (java.lang.StringBuilder): java-basic/api/api-stringbuilder.md
-      - Arrays (java.util.Arrays): java-basic/api/api-arrays.md
+      - Math: java-basic/api/api-math.md
+      - Scanner: java-basic/api/api-scanner.md
+      - System.out: java-basic/api/api-output.md
+      - PrintWriter: java-basic/api/api-printwriter.md
+      - String: java-basic/api/api-string.md
+      - StringBuilder: java-basic/api/api-stringbuilder.md
+      - Arrays: java-basic/api/api-arrays.md
+      - File: java-basic/api/api-file.md
+
 
 #  - Java проекты – справочник:
 #      - Структура учебного проекта: java-projects/concepts/project-structure.md
