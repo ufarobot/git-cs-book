@@ -18,13 +18,18 @@ fi
 
 # --- prefer SSH remote for GitHub (avoids HTTPS RPC/HTTP 400 on push) ---
 # If SSH auth is configured, switch origin to SSH; otherwise keep HTTPS.
-ORIGIN_URL="$(git remote get-url origin 2>/dev/null || true)"
+ORIGIN_FETCH_URL="$(git remote get-url origin 2>/dev/null || true)"
+ORIGIN_PUSH_URL="$(git remote get-url --push origin 2>/dev/null || true)"
+ORIGIN_URL="${ORIGIN_PUSH_URL:-${ORIGIN_FETCH_URL}}"
 if [[ -n "${ORIGIN_URL}" && "${ORIGIN_URL}" == https://github.com/* ]]; then
-  SSH_TEST_OUT="$(ssh -o BatchMode=yes -T git@github.com 2>&1 || true)"
-  if echo "${SSH_TEST_OUT}" | grep -qi "successfully authenticated"; then
+  SSH_TEST_OUT="$(ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=5 -T git@github.com 2>&1 || true)"
+  if echo "${SSH_TEST_OUT}" | grep -Eqi "successfully authenticated|^Hi [^!]+!"; then
     SSH_URL="${ORIGIN_URL/https:\/\/github.com\//git@github.com:}"
-    echo "Switching origin to SSH: ${SSH_URL}"
+    echo "Switching origin to SSH (fetch+push): ${SSH_URL}"
     git remote set-url origin "${SSH_URL}"
+    git remote set-url --push origin "${SSH_URL}"
+  else
+    echo "SSH to GitHub not ready; keeping HTTPS. ssh -T output: ${SSH_TEST_OUT}"
   fi
 fi
 
@@ -70,21 +75,27 @@ fi
 # --- push main ---
 git push origin main
 
+# debug: show which URLs will be used for push/fetch
+git remote -v
+
 # --- build & deploy (use same message for gh-pages commit) ---
 "${MKDOCS_BIN}" build
 
 # First try deploy as-is. If it fails (common with HTTPS RPC errors), retry after forcing SSH.
 if ! "${MKDOCS_BIN}" gh-deploy --force -m "deploy: ${AUTO_MSG}"; then
   echo "gh-deploy failed. Retrying with SSH remote (if available)..."
-  ORIGIN_URL="$(git remote get-url origin 2>/dev/null || true)"
+  ORIGIN_FETCH_URL="$(git remote get-url origin 2>/dev/null || true)"
+  ORIGIN_PUSH_URL="$(git remote get-url --push origin 2>/dev/null || true)"
+  ORIGIN_URL="${ORIGIN_PUSH_URL:-${ORIGIN_FETCH_URL}}"
   if [[ -n "${ORIGIN_URL}" && "${ORIGIN_URL}" == https://github.com/* ]]; then
-    SSH_TEST_OUT="$(ssh -o BatchMode=yes -T git@github.com 2>&1 || true)"
-    if echo "${SSH_TEST_OUT}" | grep -qi "successfully authenticated"; then
+    SSH_TEST_OUT="$(ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=5 -T git@github.com 2>&1 || true)"
+    if echo "${SSH_TEST_OUT}" | grep -Eqi "successfully authenticated|^Hi [^!]+!"; then
       SSH_URL="${ORIGIN_URL/https:\/\/github.com\//git@github.com:}"
-      echo "Switching origin to SSH: ${SSH_URL}"
+      echo "Switching origin to SSH (fetch+push): ${SSH_URL}"
       git remote set-url origin "${SSH_URL}"
+      git remote set-url --push origin "${SSH_URL}"
     else
-      echo "SSH auth to GitHub not configured; cannot retry via SSH."
+      echo "SSH auth to GitHub not configured; cannot retry via SSH. ssh -T output: ${SSH_TEST_OUT}"
       exit 1
     fi
   fi
