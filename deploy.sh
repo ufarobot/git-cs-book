@@ -103,5 +103,16 @@ if ! "${MKDOCS_BIN}" gh-deploy --force -m "deploy: ${AUTO_MSG}"; then
 fi
 
 # --- open site ---
-open "https://ufarobot.github.io/git-cs-book/"
+SITE_URL="https://ufarobot.github.io/git-cs-book/"
+if [[ -f "docs/CNAME" ]]; then
+  CNAME_HOST="$(head -n 1 docs/CNAME | tr -d '\r' | xargs)"
+  if [[ -n "${CNAME_HOST}" ]]; then
+    if [[ "${CNAME_HOST}" == http://* || "${CNAME_HOST}" == https://* ]]; then
+      SITE_URL="${CNAME_HOST}"
+    else
+      SITE_URL="https://${CNAME_HOST}"
+    fi
+  fi
+fi
+open "${SITE_URL}"
 echo "Done."
