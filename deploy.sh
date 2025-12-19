@@ -16,11 +16,26 @@ if [[ ! -f "mkdocs.yml" ]]; then
   echo "mkdocs.yml not found. Run from project root."; exit 1
 fi
 
-# --- optional GitHub login via gh ---
-if command -v gh >/dev/null 2>&1; then
-  if ! gh auth status -h github.com >/dev/null 2>&1; then
-    echo "Logging into GitHub via browser..."
-    gh auth login --hostname github.com --web --git-protocol https >/dev/null
+# --- prefer SSH remote for GitHub (avoids HTTPS RPC/HTTP 400 on push) ---
+# If SSH auth is configured, switch origin to SSH; otherwise keep HTTPS.
+ORIGIN_URL="$(git remote get-url origin 2>/dev/null || true)"
+if [[ -n "${ORIGIN_URL}" && "${ORIGIN_URL}" == https://github.com/* ]]; then
+  SSH_TEST_OUT="$(ssh -o BatchMode=yes -T git@github.com 2>&1 || true)"
+  if echo "${SSH_TEST_OUT}" | grep -qi "successfully authenticated"; then
+    SSH_URL="${ORIGIN_URL/https:\/\/github.com\//git@github.com:}"
+    echo "Switching origin to SSH: ${SSH_URL}"
+    git remote set-url origin "${SSH_URL}"
+  fi
+fi
+
+# --- optional GitHub login via gh (only needed for HTTPS remotes) ---
+ORIGIN_URL="$(git remote get-url origin 2>/dev/null || true)"
+if [[ -n "${ORIGIN_URL}" && "${ORIGIN_URL}" == https://github.com/* ]]; then
+  if command -v gh >/dev/null 2>&1; then
+    if ! gh auth status -h github.com >/dev/null 2>&1; then
+      echo "Logging into GitHub via browser..."
+      gh auth login --hostname github.com --web --git-protocol https >/dev/null
+    fi
   fi
 fi
 
@@ -57,7 +72,24 @@ git push origin main
 
 # --- build & deploy (use same message for gh-pages commit) ---
 "${MKDOCS_BIN}" build
-"${MKDOCS_BIN}" gh-deploy --force -m "deploy: ${AUTO_MSG}"
+
+# First try deploy as-is. If it fails (common with HTTPS RPC errors), retry after forcing SSH.
+if ! "${MKDOCS_BIN}" gh-deploy --force -m "deploy: ${AUTO_MSG}"; then
+  echo "gh-deploy failed. Retrying with SSH remote (if available)..."
+  ORIGIN_URL="$(git remote get-url origin 2>/dev/null || true)"
+  if [[ -n "${ORIGIN_URL}" && "${ORIGIN_URL}" == https://github.com/* ]]; then
+    SSH_TEST_OUT="$(ssh -o BatchMode=yes -T git@github.com 2>&1 || true)"
+    if echo "${SSH_TEST_OUT}" | grep -qi "successfully authenticated"; then
+      SSH_URL="${ORIGIN_URL/https:\/\/github.com\//git@github.com:}"
+      echo "Switching origin to SSH: ${SSH_URL}"
+      git remote set-url origin "${SSH_URL}"
+    else
+      echo "SSH auth to GitHub not configured; cannot retry via SSH."
+      exit 1
+    fi
+  fi
+  "${MKDOCS_BIN}" gh-deploy --force -m "deploy: ${AUTO_MSG}"
+fi
 
 # --- open site ---
 open "https://ufarobot.github.io/git-cs-book/"
