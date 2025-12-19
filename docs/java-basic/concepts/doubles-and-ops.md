@@ -1,205 +1,292 @@
+# Дробные числа и операции
 
+Дробные числа нужны, когда важна часть после запятой: длина, время, скорость, площадь и т.п.
 
-# Дробные числа и операции (double)
+=== "Java"
 
-Дробные числа нужны, когда важна часть после запятой: длина, время, скорость, площадь, средний балл и т.п.  
-В Java для таких значений обычно используют тип `double`.
+    **Тип**
 
-Типичная схема: считать числа c дробной частью, посчитать по формуле и вывести результат.
+    В Java для дробных значений обычно используют `double`.
 
-```java
-double a = 7.5;
-double b = 3.0;
-double sum = a + b;
+    ```java
+    double x = 7.5;
+    double y = 3.0;
+    System.out.println(x + y); // 10.5
+    ```
 
-System.out.println(sum);  // 10.5
-```
+    **Деление**
 
----
+    Деление `double / double` сохраняет дробную часть.
 
-## Краткая сводка
+    ```java
+    double a = 7.0;
+    double b = 3.0;
+    System.out.println(a / b); // 2.3333333333333335
+    ```
 
-Переменная дробного типа объявляется так:
+    Если оба числа целые (`int`), сначала выполняется целочисленное деление.
 
-```java
-double имя = значение;
-```
+    ```java
+    int a = 7;
+    int b = 3;
 
-Примеры:
+    System.out.println(a / b);        // 2
+    System.out.println(a / 3.0);      // 2.3333333333333335
+    System.out.println((double) a / b); // 2.3333333333333335
+    ```
 
-```java
-double x = 0.0;
-double pi = 3.14159;
-double speed = 12.5;
-```
+    **Смешанные выражения**
 
-Основные операции над `double` те же, что и для `int`:
+    Если в выражении есть и `int`, и `double`, результат становится `double`.
 
-- сложение: `+`
-- вычитание: `-`
-- умножение: `*`
-- деление: `/`
+    ```java
+    int n = 5;
+    double t = 2.5;
 
-Остаток `%` с `double` почти не нужен в базовых задачах, достаточно знать, что он существует.
+    System.out.println(n + t); // 7.5
+    System.out.println(n * t); // 12.5
+    ```
 
----
+    **Округление и вывод**
 
-## Тип double
+    Для округления часто используют `Math.round`, `Math.floor`, `Math.ceil`.
 
-`double` хранит числа с дробной частью (вещественные числа).  
-Примеры:
+    ```java
+    double x = 3.56;
 
-```java
-double temp = 36.6;
-double length = 2.75;
-double ratio = 1.0 / 3.0;  // 0.3333...
-```
+    System.out.println(Math.round(x)); // 4
+    System.out.println(Math.floor(x)); // 3.0
+    System.out.println(Math.ceil(x));  // 4.0
+    ```
 
-Для физических величин (скорость, путь, время), процентов, средних значений обычно используют именно `double`.
+    Для вывода с фиксированным количеством знаков удобно `printf`.
 
----
+    ```java
+    double p = Math.PI;
+    System.out.printf("pi = %.2f%n", p);
+    System.out.printf("pi = %.4f%n", p);
+    ```
 
-## Деление double
+    **Примеры**
 
-При делении `double / double` результат тоже `double`, дробная часть сохраняется:
+    Среднее арифметическое:
 
-```java
-double a = 7.0;
-double b = 3.0;
+    ```java
+    double a = 10.0;
+    double b = 20.0;
+    double c = 25.0;
 
-double q = a / b;   // примерно 2.3333333
-```
+    double avg = (a + b + c) / 3.0;
+    System.out.println(avg);
+    ```
 
-Если делитель или делимое — `int`, а другой операнд `double`, выражение автоматически считается в `double`:
+    Процент от числа:
 
-```java
-int a = 7;
-int b = 3;
+    ```java
+    double value = 250.0;
+    double p = 12.0;
 
-double q1 = a / b;      // 2.0  (целочисленное деление, результат потом в double)
-double q2 = a / 3.0;    // 2.3333... (одно из чисел double)
-double q3 = (double)a / b; // тоже 2.3333...
-```
+    double part = value * p / 100.0;
+    System.out.println(part);
+    ```
 
-Важно: если оба операнда целые (`int`), сначала выполняется целочисленное деление, а уже потом результат превращается в `double`.  
-Чтобы получить настоящий дробный результат, хотя бы один операнд должен быть `double` (например, `3.0` вместо `3`).
 
----
+=== "C++"
 
-## Смешанные выражения int и double
+    **Тип**
 
-Когда в выражении встречаются и `int`, и `double`, Java автоматически «поднимает» результат к `double`.
+    В C++ для дробных значений обычно используют `double`.
 
-Пример:
+    ```cpp
+    double x = 7.5;
+    double y = 3.0;
+    std::cout << (x + y) << "\n"; // 10.5
+    ```
 
-```java
-int    n = 5;
-double x = 2.5;
+    **Деление**
 
-double s1 = n + x;    // 7.5
-double s2 = n * x;    // 12.5
-```
+    `double / double` сохраняет дробную часть.
 
-Частый приём: привести одно из чисел к `double`, чтобы получить дробный результат:
+    ```cpp
+    double a = 7.0;
+    double b = 3.0;
+    std::cout << (a / b) << "\n";
+    ```
 
-```java
-int sum = 7;
-int count = 2;
+    Если оба числа целые (`int`), деление будет целочисленным.
 
-double avg1 = sum / count;        // 3.0  (целая часть)
-double avg2 = sum / (double)count; // 3.5  (настоящее среднее)
-double avg3 = sum / 2.0;          // 3.5
-```
+    ```cpp
+    int a = 7;
+    int b = 3;
 
----
+    std::cout << (a / b) << "\n";            // 2
+    std::cout << (a / 3.0) << "\n";          // 2.33333...
+    std::cout << (static_cast<double>(a) / b) << "\n";
+    ```
 
-## Округление и форматированный вывод
+    **Округление и вывод**
 
-Иногда результат нужно округлить или вывести с определённым количеством знаков после запятой.
+    Округление: `std::round`, `std::floor`, `std::ceil` (заголовок `<cmath>`).
 
-Округление:
+    ```cpp
+    double x = 3.56;
 
-```java
-double x = 3.56;
+    std::cout << std::round(x) << "\n"; // 4
+    std::cout << std::floor(x) << "\n"; // 3
+    std::cout << std::ceil(x)  << "\n"; // 4
+    ```
 
-long r1 = Math.round(x);   // 4
-double f = Math.floor(x);  // 3.0  (вниз)
-double c = Math.ceil(x);   // 4.0  (вверх)
-```
+    Вывод с фиксированным количеством знаков: `std::fixed` и `std::setprecision` (заголовок `<iomanip>`).
 
-Форматированный вывод через `printf`:
+    ```cpp
+    double p = 3.141592653589793;
+    std::cout << std::fixed << std::setprecision(2) << p << "\n"; // 3.14
+    std::cout << std::fixed << std::setprecision(4) << p << "\n"; // 3.1416
+    ```
 
-```java
-double x = 3.14159265;
+    **Примеры**
 
-System.out.printf("x = %.2f%n", x);  // x = 3.14
-System.out.printf("x = %.4f%n", x);  // x = 3.1416
-```
+    Среднее арифметическое:
 
-`%.2f` — число с плавающей точкой с 2 знаками после запятой,  
-`%.4f` — с 4 знаками после запятой.
+    ```cpp
+    double a = 10.0;
+    double b = 20.0;
+    double c = 25.0;
 
----
+    double avg = (a + b + c) / 3.0;
+    std::cout << avg << "\n";
+    ```
 
-## Типичные шаблоны
+    Перевод градусов в радианы:
 
-**Средняя скорость**
+    \[
+    \text{rad} = \text{deg} \cdot \frac{\pi}{180}
+    \]
 
-```java
-double distance = in.nextDouble();   // путь
-double time = in.nextDouble();       // время
+    ```cpp
+    double deg = 60.0;
+    double rad = deg * M_PI / 180.0;
+    std::cout << rad << "\n";
+    ```
 
-double speed = distance / time;
+    Если `M_PI` недоступен, можно взять `acos(-1.0)`:
 
-System.out.println(speed);
-```
+    ```cpp
+    double pi = std::acos(-1.0);
+    ```
 
-**Среднее арифметическое**
+=== "Python"
 
-```java
-double a = in.nextDouble();
-double b = in.nextDouble();
-double c = in.nextDouble();
+    **Тип**
 
-double avg = (a + b + c) / 3.0;
+    В Python дробные числа – это `float`.
 
-System.out.println(avg);
-```
+    ```python
+    x = 7.5
+    y = 3.0
+    print(x + y)  # 10.5
+    ```
 
-**Процент от числа**
+    **Деление**
 
-```java
-double value = in.nextDouble();
-double p = in.nextDouble();   // процент
+    Оператор `/` всегда даёт дробный результат.
 
-double part = value * p / 100.0;
+    ```python
+    a = 7
+    b = 3
 
-System.out.println(part);
-```
+    print(a / b)   # 2.3333333333333335
+    print(a // b)  # 2
+    ```
 
-**Перевод градусов в радианы**
+    **Округление и вывод**
 
-\[
-\text{rad} = \text{deg} \cdot \frac{\pi}{180}
-\]
+    Округление: `round(x)`.
 
-```java
-double deg = in.nextDouble();
-double rad = deg * Math.PI / 180.0;
+    ```python
+    x = 3.56
+    print(round(x))  # 4
+    ```
 
-System.out.println(rad);
-```
+    Вывод с количеством знаков часто делают через форматирование.
 
----
+    ```python
+    import math
 
-## Что нужно запомнить
+    p = math.pi
+    print(f"pi = {p:.2f}")
+    print(f"pi = {p:.4f}")
+    ```
 
-Для чисел с дробной частью в Java обычно используют тип `double`:
+    **Примеры**
 
-```java
-double x = 3.5;
-```
+    Среднее арифметическое:
 
-Выражение с `int` и `double` считается в типе `double`. Чтобы деление было «настоящим» дробным, хотя бы один операнд должен быть `double`.
+    ```python
+    a = 10.0
+    b = 20.0
+    c = 25.0
 
-Для вывода аккуратных дробных результатов удобно использовать `Math.round`, `Math.floor`, `Math.ceil` и форматированный вывод `printf` с `%.2f`, `%.3f` и т.п.
+    avg = (a + b + c) / 3.0
+    print(avg)
+    ```
+
+    Перевод градусов в радианы:
+
+    \[
+    \text{rad} = \text{deg} \cdot \frac{\pi}{180}
+    \]
+
+    ```python
+    import math
+
+    deg = 60.0
+    rad = deg * math.pi / 180.0
+    print(rad)
+    ```
+
+=== "Отличия"
+
+    **Тип дробных чисел**
+
+    | Язык | Тип | Где часто спотыкаются |
+    |------|-----|------------------------|
+    | Java | `double` | целочисленное деление `int / int` даёт `int` |
+    | C++ | `double` | целочисленное деление `int / int` даёт `int` |
+    | Python | `float` | `/` всегда дробное, а `//` – целая часть |
+
+    **Как получить дробный результат при делении целых**
+
+    Java: сделать один операнд `double`.
+
+    ```java
+    int a = 7, b = 3;
+    System.out.println(a / 3.0);
+    System.out.println((double) a / b);
+    ```
+
+    C++: сделать один операнд `double`.
+
+    ```cpp
+    int a = 7, b = 3;
+    std::cout << (a / 3.0) << "\n";
+    std::cout << (static_cast<double>(a) / b) << "\n";
+    ```
+
+    Python: `/` уже даёт дробный результат.
+
+    ```python
+    a = 7
+    b = 3
+    print(a / b)
+    ```
+
+    **Вывод с количеством знаков после запятой**
+
+    Java: `printf("%.2f")`.
+
+    C++: `std::fixed << std::setprecision(2)`.
+
+    Python: `f"{x:.2f}"`.
+
+    Во всех трёх языках `double/float` хранят число приближённо, поэтому сравнение дробных чисел на точное равенство часто даёт неожиданные результаты.

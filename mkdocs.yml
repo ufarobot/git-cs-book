@@ -1,12 +1,13 @@
 # Конфигурация сайта для MkDocs + Material
 
-site_name: "CS: Программирование на Java"
+site_name: "Программирование на Java /  C++ / Python"
 # Тема оформления и язык интерфейса
 theme:
   name: material
   language: ru
   features:
     - content.code.copy
+    - content.tabs.link
     - navigation.footer
 
 # Расширения Markdown и плагины pymdownx (таблицы, подсветка кода, формулы)
@@ -25,6 +26,8 @@ markdown_extensions:
   - pymdownx.inlinehilite   # подсветка кода прямо в строке текста
   - pymdownx.snippets      # подключение фрагментов кода из отдельных файлов
   - pymdownx.superfences   # улучшенная работа с многострочными блоками кода
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra:
   generator: false
@@ -39,11 +42,11 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - Java основы – справочник:
+  - Основы:
       - Простейшая программа: java-basic/concepts/1-simple-program.md
-      - Переменные и типы данных: java-basic/concepts/variables-and-types.md
-      - Целые числа и операции: java-basic/concepts/integers-and-ops.md
-      - Дробные числа и операции: java-basic/concepts/doubles-and-ops.md
+      - Переменные: java-basic/concepts/variables-and-types.md
+      - Целые числа: java-basic/concepts/integers-and-ops.md
+      - Дробные числа: java-basic/concepts/doubles-and-ops.md
       - Логические значения: java-basic/concepts/booleans-and-logic.md
       - Символы: java-basic/concepts/chars.md
       - Строки: java-basic/concepts/strings.md

@@ -46,26 +46,6 @@
 - [StringBuilder (java.lang.StringBuilder)](java-basic/api/api-stringbuilder.md)
 - [Arrays (java.util.Arrays)](java-basic/api/api-arrays.md)
 
-**Java проекты – справочник**
-
-Как строить небольшие учебные проекты:
-
-- [Структура проекта](java-projects/concepts/project-structure.md)
-- [Разбор условия задачи](java-projects/concepts/problem-analysis.md)
-- [Пошаговая разработка](java-projects/concepts/step-by-step-dev.md)
-- [Ввод из файла](java-projects/concepts/file-input.md)
-- [Отладка и тестирование](java-projects/concepts/debugging-and-tests.md)
-- [Маленькие консольные игры](java-projects/concepts/mini-console-games.md)
-
-**Java проекты – сторонние API**
-
-Материалы по дополнительным библиотекам, используемым в курсе:
-
-- [StdDraw (простая графика)](java-projects/api/stddraw.md)
-- [StdAudio (звук)](java-projects/api/stdaudio.md)
-- [Утилиты курса](java-projects/api/course-utils.md)
-
----
 
 ## Как пользоваться справочником
 
