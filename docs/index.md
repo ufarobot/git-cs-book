@@ -1,56 +1,67 @@
 # Добро пожаловать
 
-Это рабочий справочник по программированию на Java для школьных задач и учебных проектов.  
-Здесь собраны краткие объяснения, примеры кода и опорные шаблоны, к которым удобно возвращаться во время решения задач.
+Это рабочий справочник по программированию: Java, C++ и Python.  
+Короткие объяснения, примеры кода и опорные шаблоны – чтобы быстро находить нужное во время решения задач и работы над учебными проектами.
+
+Многие страницы оформлены вкладками: **Java**, **C++**, **Python** и **Отличия**.
 
 ---
 
 ## С чего начать
 
-Если ты только знакомишься с Java, начни с этих страниц:
+Если начинаешь с нуля, открой эти страницы по порядку:
 
-- [Простейшая программа: чтение, вычисление, вывод](java-basic/concepts/1-simple-program.md)
-- [Переменные и типы данных](java-basic/concepts/variables-and-types.md)
+- [Простейшая программа](java-basic/concepts/1-simple-program.md)
+- [Переменные](java-basic/concepts/variables-and-types.md)
 - [Ввод и вывод](java-basic/concepts/io-basics.md)
+
+Если уже уверенно пишешь простые программы, полезно сразу добавить:
+
+- [Преобразование типов](java-basic/concepts/type-conversion.md)
 
 ---
 
-## Основные разделы
-
-**Java основы – справочник по концепциям**
-
-Короткие теоретические заметки и шаблоны кода:
+## Основы
 
 - [Простейшая программа](java-basic/concepts/1-simple-program.md)
-- [Переменные и типы данных](java-basic/concepts/variables-and-types.md)
-- [Целые числа и операции (int)](java-basic/concepts/integers-and-ops.md)
-- [Дробные числа и операции (double)](java-basic/concepts/doubles-and-ops.md)
-- [Логические значения и условия (boolean)](java-basic/concepts/booleans-and-logic.md)
-- [Символы (char)](java-basic/concepts/chars.md)
-- [Строки (String)](java-basic/concepts/strings.md)
+- [Переменные](java-basic/concepts/variables-and-types.md)
+- [Целые числа](java-basic/concepts/integers-and-ops.md)
+- [Дробные числа](java-basic/concepts/doubles-and-ops.md)
+- [Логические значения](java-basic/concepts/booleans-and-logic.md)
+- [Символы](java-basic/concepts/chars.md)
+- [Строки](java-basic/concepts/strings.md)
+- [Преобразование типов](java-basic/concepts/type-conversion.md)
 - [Ввод и вывод](java-basic/concepts/io-basics.md)
-- [Условия (if)](java-basic/concepts/if-statements.md)
-- [Циклы (for и while)](java-basic/concepts/loops.md)
-- [Массивы (1D)](java-basic/concepts/arrays-1d.md)
-- [Массивы (2D)](java-basic/concepts/arrays-2d.md)
-- [Функции (методы)](java-basic/concepts/methods.md)
+- [Ветвления](java-basic/concepts/if-statements.md)
+- [Циклы](java-basic/concepts/loops.md)
+- [Массивы](java-basic/concepts/arrays-1d.md)
+- [Многомерные массивы](java-basic/concepts/arrays-2d.md)
+- [Функции](java-basic/concepts/methods.md)
 
-**Java основы – API**
+---
 
-Краткие страницы по часто используемым классам стандартной библиотеки:
+## Java основы – API
 
-- [Math (java.lang.Math)](java-basic/api/api-math.md)
-- [Scanner (java.util.Scanner)](java-basic/api/api-scanner.md)
-- [Вывод: System.out и PrintWriter](java-basic/api/api-output.md)
-- [String (java.lang.String)](java-basic/api/api-string.md)
-- [StringBuilder (java.lang.StringBuilder)](java-basic/api/api-stringbuilder.md)
-- [Arrays (java.util.Arrays)](java-basic/api/api-arrays.md)
+Краткие страницы по часто используемым классам и механикам стандартной библиотеки Java:
 
+- [Math](java-basic/api/api-math.md)
+- [Scanner](java-basic/api/api-scanner.md)
+- [System.out](java-basic/api/api-output.md)
+- [PrintWriter](java-basic/api/api-printwriter.md)
+- [String](java-basic/api/api-string.md)
+- [StringBuilder](java-basic/api/api-stringbuilder.md)
+- [Arrays](java-basic/api/api-arrays.md)
+- [File](java-basic/api/api-file.md)
+
+---
 
 ## Как пользоваться справочником
 
-Навигация слева показывает все разделы и страницы; можно разворачивать и сворачивать списки.  
-Строка поиска по сайту помогает быстро найти нужный термин, тип или пример кода.  
-На занятиях можно открывать страницу, соответствующую текущей теме, и использовать примеры как заготовки для своих программ.
+Навигация слева показывает все разделы и страницы.  
+Поиск по сайту помогает быстро найти нужный термин, тип или пример кода.
 
-По мере развития курса будут добавляться разделы по математике и алгоритмам, но структура и стиль страниц останутся такими же: короткая теория, понятные примеры и готовые шаблоны для задач.
+Если на странице есть вкладки, их удобно использовать так:
+
+- выбрать язык (Java/C++/Python),
+- при необходимости открыть вкладку **Отличия**,
+- скопировать пример кода и адаптировать под задачу.
