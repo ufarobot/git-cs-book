@@ -5,21 +5,6 @@
 
 Многие страницы оформлены вкладками: **Java**, **C++**, **Python** и **Отличия**.
 
----
-
-## С чего начать
-
-Если начинаешь с нуля, открой эти страницы по порядку:
-
-- [Простейшая программа](java-basic/concepts/1-simple-program.md)
-- [Переменные](java-basic/concepts/variables-and-types.md)
-- [Ввод и вывод](java-basic/concepts/io-basics.md)
-
-Если уже уверенно пишешь простые программы, полезно сразу добавить:
-
-- [Преобразование типов](java-basic/concepts/type-conversion.md)
-
----
 
 ## Основы
 
