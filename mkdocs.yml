@@ -50,6 +50,7 @@ nav:
       - Логические значения: java-basic/concepts/booleans-and-logic.md
       - Символы: java-basic/concepts/chars.md
       - Строки: java-basic/concepts/strings.md
+      - Преобразование типов: java-basic/concepts/type-conversion.md
       - Ввод и вывод: java-basic/concepts/io-basics.md
       - Ветвления: java-basic/concepts/if-statements.md
       - Циклы: java-basic/concepts/loops.md
