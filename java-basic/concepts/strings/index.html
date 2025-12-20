@@ -822,7 +822,7 @@
 
 
 
-<h1 id="string">Строки (String)</h1>
+<h1 id="_1">Строки</h1>
 <p>Строка – это текст: слово, фраза, предложение, любое сообщение, состоящее из символов.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Java</label><label for="__tabbed_1_2">C++</label><label for="__tabbed_1_3">Python</label><label for="__tabbed_1_4">Отличия</label></div>
 <div class="tabbed-content">
@@ -834,7 +834,7 @@
 </span></code></pre></div>
 <p>Строки удобно использовать для имён, названий, сообщений, вводимых пользователем.</p>
 <hr />
-<h2 id="_1">Краткая сводка</h2>
+<h2 id="_2">Краткая сводка</h2>
 <p>Строковая переменная объявляется так:</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">String</span><span class="w"> </span><span class="n">имя</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Текст&quot;</span><span class="p">;</span>
 </span></code></pre></div>
@@ -850,7 +850,7 @@
 <li>строка может быть и пустой (<code>""</code>).</li>
 </ul>
 <hr />
-<h2 id="_2">Создание строк</h2>
+<h2 id="_3">Создание строк</h2>
 <p>Основной способ – строковый литерал:</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Java&quot;</span><span class="p">;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">String</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Строки в Java&quot;</span><span class="p">;</span>
@@ -864,7 +864,7 @@
 </span></code></pre></div>
 <p>Есть и другие способы (через <code>String.valueOf</code>, конструкторы и т.п.), но в большинстве задач хватает литералов и конкатенации.</p>
 <hr />
-<h2 id="_3">Длина строки и доступ к символам</h2>
+<h2 id="_4">Длина строки и доступ к символам</h2>
 <p>У строки есть длина – количество символов.<br />
 Нумерация символов начинается с 0.</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Java&quot;</span><span class="p">;</span>
@@ -879,7 +879,7 @@
 <li>если обратиться к несуществующему индексу, будет ошибка выполнения.</li>
 </ul>
 <hr />
-<h2 id="_4">Конкатенация (склейка) строк</h2>
+<h2 id="_5">Конкатенация (склейка) строк</h2>
 <p>Строки можно склеивать оператором <code>+</code>.<br />
 Числа и другие типы при этом автоматически превращаются в текст.</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Иван&quot;</span><span class="p">;</span>
@@ -896,7 +896,7 @@
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1">// &quot;a = 7, b = 3&quot;</span>
 </span></code></pre></div>
 <hr />
-<h2 id="_5">Сравнение строк</h2>
+<h2 id="_6">Сравнение строк</h2>
 <p>Строки нельзя сравнивать по содержимому через <code>==</code>.<br />
 Для сравнения текста используются методы <code>equals</code> и <code>equalsIgnoreCase</code>.</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">;</span>
@@ -910,7 +910,7 @@
 <p><code>==</code> проверяет, совпадают ли ссылки (адреса), а не текст.<br />
 Для задач с текстом по содержимому всегда используем <code>equals</code>.</p>
 <hr />
-<h2 id="_6">Подстроки и поиск</h2>
+<h2 id="_7">Подстроки и поиск</h2>
 <p>Часть строки можно получить методом <code>substring</code>:</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;abcdef&quot;</span><span class="p">;</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
@@ -926,7 +926,7 @@
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kt">int</span><span class="w"> </span><span class="n">p3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="s">&quot;xyz&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// -1 (нет вхождения)</span>
 </span></code></pre></div>
 <hr />
-<h2 id="_7">Разбиение строки</h2>
+<h2 id="_8">Разбиение строки</h2>
 <p>Метод <code>split</code> разбивает строку на части по разделителю и возвращает массив строк.</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">String</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;one two three&quot;</span><span class="p">;</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
@@ -934,7 +934,7 @@
 </span></code></pre></div>
 <p>Частый случай – разделение по пробелу или запятой.</p>
 <hr />
-<h2 id="_8">Чтение строк с клавиатуры</h2>
+<h2 id="_9">Чтение строк с клавиатуры</h2>
 <p>Через <code>Scanner</code> строки читают так:</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">Scanner</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
@@ -948,7 +948,7 @@
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">String</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w">   </span><span class="c1">// теперь читаем настоящую строку</span>
 </span></code></pre></div>
 <hr />
-<h2 id="_9">Типичные шаблоны</h2>
+<h2 id="_10">Типичные шаблоны</h2>
 <p><strong>Подсчёт длины строки</strong></p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
@@ -976,7 +976,7 @@
 </span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="p">}</span>
 </span></code></pre></div>
 <hr />
-<h2 id="_10">Что нужно запомнить</h2>
+<h2 id="_11">Что нужно запомнить</h2>
 <p>Строки в Java хранятся в типе <code>String</code> и записываются в двойных кавычках:</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Привет&quot;</span><span class="p">;</span>
 </span></code></pre></div>
