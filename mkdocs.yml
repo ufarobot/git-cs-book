@@ -1,6 +1,8 @@
 # Конфигурация сайта для MkDocs + Material
 
 site_name: "Программирование на Java /  C++ / Python"
+repo_name: "learncs.ru"
+repo_url: "https://learncs.ru/"
 # Тема оформления и язык интерфейса
 theme:
   name: material
@@ -9,6 +11,8 @@ theme:
     - content.code.copy
     - content.tabs.link
     - navigation.footer
+  icon:
+    repo: material/link-variant
 
 # Расширения Markdown и плагины pymdownx (таблицы, подсветка кода, формулы)
 markdown_extensions:
